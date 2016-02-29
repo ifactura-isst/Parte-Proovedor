@@ -14,9 +14,9 @@ public interface OfferDAO {
 
 	List<Offer> listOffersByUser(User user);
 
-	public void add (String title, String description, User user);
+	public void add (String title, String description, User user, int price, String service);
 
-	public void update(long id, String title, String description, User user);
+	public void update(long id, String title, String description, User user, int price, String service);
 
 	Offer getOffer(long offerId);
 	

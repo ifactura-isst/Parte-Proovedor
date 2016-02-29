@@ -50,9 +50,14 @@ public class UpdateOffer extends HttpServlet{
 		Offer offer = dao.getOffer(Long.parseLong(offerId));
 		String description = offer.getDescription();
 		String title = offer.getTitle();
+		int price = offer.getPrice();
+		String service = offer.getService();
 
 		req.getSession().setAttribute("title", title);
 		req.getSession().setAttribute("description", description);
+		req.getSession().setAttribute("price", price);
+		req.getSession().setAttribute("service", service);
+		
 		req.getSession().setAttribute("id", offerId);
 		req.getSession().setAttribute("user", user);
 
@@ -75,6 +80,8 @@ public class UpdateOffer extends HttpServlet{
 			String offerId = req.getParameter("offerId");
 			String title = checkNull(req.getParameter("title"));
 			String description = checkNull(req.getParameter("description"));
+			int price = Integer.parseInt(req.getParameter("price"));
+			String service = checkNull(req.getParameter("service"));
 			UserService userService = UserServiceFactory.getUserService();
 			User user = userService.getCurrentUser();
 			
@@ -83,7 +90,7 @@ public class UpdateOffer extends HttpServlet{
 			try {
 				System.out.println("Oferta datos a update: "+offerId+title+description);
 				daoffer.update(Long.parseLong(offerId), title,
-						description, user);
+						description, user, price, service);
 				req.getSession().setAttribute("dialogo", "Oferta Modificada Correctamente!");
 
 			} finally {

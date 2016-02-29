@@ -32,9 +32,11 @@ public class AddOffer extends HttpServlet{
 		User user = userService.getCurrentUser();
 		String title = checkNull(req.getParameter("title"));
 		String Description = checkNull(req.getParameter("description"));
+		int price = Integer.parseInt(req.getParameter("price"));
+		String service = checkNull(req.getParameter("service"));
 		OfferDAO dao = OfferDAOImpl.getInstance();
-		dao.add(title, Description, user);
-		System.out.println("añadida oferta con titulo y descrip:"+title+" "+Description+" y USer:"+user);
+		dao.add(title, Description, user, price, service);
+		System.out.println("añadida oferta con titulo y descrip:"+title+" "+Description+" y USer:"+user+"precio: "+price+"servicio: "+service);
 		PrintWriter out = resp.getWriter();
 		req.getSession().setAttribute("dialogo", "Oferta creada Correctamente!");
 		out.println("<script>location='/ofertas';</script>");

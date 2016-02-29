@@ -20,11 +20,15 @@ public class Offer implements Serializable {
 	private String title;
 	private String description;
 	private User user;
+	private int price;
+	private String service;
 	
-	public Offer(String title, String description, User user) {
+	public Offer(String title, String description, User user, int price, String service) {
 		this.title = title;
 		this.description = description;
 		this.user = user;
+		this.price = price;
+		this.service = service;
 	}
 
 	public Long getId() {
@@ -42,9 +46,25 @@ public class Offer implements Serializable {
 	public String getDescription() {
 		return description;
 	}
-
+	
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
+	public int getPrice() {
+		return price;
+	}
+	
+	public String getService() {
+		return service;
+	}
+
+	public void setService(String service) {
+		this.service = service;
 	}
 
 

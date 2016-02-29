@@ -33,12 +33,22 @@
 					<div class="content menu-ancho text-center">
 					<form method="post" action="/actualizaoferta?offerId=${id}">
 									<div class="row uniform 50%">
+										<div class="12u$">
+											<input type="text" name="title" id="title" value="${title}" placeholder="Añade un título" required>
+										</div>
 										<div class="6u 12u$(xsmall)">
-											<input type="text" name="title" id="title" value="${title}" placeholder="Añade un nuevo título">
+											<input type="text" name="price" id="price" value="${price}" pattern="[0-9]{1,3}" placeholder="Añade un precio" required>
 										</div>
 										<div class="12u$">
-											<textarea name="description" id="description" placeholder="Añade una nueva descripción" rows="6">
-											${description}</textarea>
+										<select name="service" id="service" required>
+													<option value="${service}"><c:out value="${service}"/></option>
+													<option value="luz">Luz</option>
+													<option value="telefono">Teléfono</option>
+													<option value="gas">Gas</option>
+										</select>
+										</div>
+										<div class="12u$">
+											<textarea name="description" id="description" placeholder="Añade una descripción" rows="6"><c:out value="${description}"/></textarea>
 										</div>
 										<div class="12u$">
 											<ul class="actions">

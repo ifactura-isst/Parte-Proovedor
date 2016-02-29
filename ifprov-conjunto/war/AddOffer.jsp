@@ -33,8 +33,19 @@
 					<div class="content menu-ancho text-center">
 					<form method="post" action="#">
 									<div class="row uniform 50%">
+										<div class="12u$">
+											<input type="text" name="title" id="title" value="" placeholder="Añade un título" required>
+										</div>
 										<div class="6u 12u$(xsmall)">
-											<input type="text" name="title" id="title" value="" placeholder="Añade un título">
+											<input type="text" name="price" id="price" value="" pattern="[0-9]{1,3}" placeholder="Añade un precio" required>
+										</div>
+										<div class="12u$">
+										<select name="service" id="service" required>
+													<option value="">- Selecione tipo de servicio -</option>
+													<option value="luz">Luz</option>
+													<option value="telefono">Teléfono</option>
+													<option value="gas">Gas</option>
+										</select>
 										</div>
 										<div class="12u$">
 											<textarea name="description" id="description" placeholder="Añade una descripción" rows="6"></textarea>

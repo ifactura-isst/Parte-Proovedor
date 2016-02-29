@@ -36,7 +36,9 @@
 					<c:forEach items="${offers}" var="offer">
 						<div class="col-md-3 height offer">
 							<h4><c:out value="${offer.title}" /></h4>
+							<h4><c:out value="${offer.price}" />€</h4>
 							<hr>
+							<p title="${offer.service}"><c:out value="${offer.service}" /></p>
 							<p title="${offer.description}"><c:out value="${offer.description}" /></p>
 							<span>
 								<a class="btn btn-default btn-round btn-border-w" href="<c:url value="/actualizaoferta?id=${offer.id}" />">Modificar</a>

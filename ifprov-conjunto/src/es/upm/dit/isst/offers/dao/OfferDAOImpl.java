@@ -36,10 +36,10 @@ public class OfferDAOImpl implements OfferDAO {
 	}
 
 	@Override
-	public void add(String title, String description, User user) {
+	public void add(String title, String description, User user, int price, String service) {
 		synchronized (this) {
 			EntityManager em = EMFService.get().createEntityManager();
-			Offer offer = new Offer(title, description, user);
+			Offer offer = new Offer(title, description, user, price, service);
 			em.persist(offer);
 			em.close();
 		}
@@ -71,12 +71,14 @@ public class OfferDAOImpl implements OfferDAO {
 	}
 
 	@Override
-	public void update(long offerId, String title, String description, User user) {
+	public void update(long offerId, String title, String description, User user, int price, String service) {
 		EntityManager em = EMFService.get().createEntityManager();
 		try {
 			Offer offer = em.find(Offer.class, offerId);
 			offer.setTitle(title);
 			offer.setDescription(description);
+			offer.setPrice(price);
+			offer.setService(service);
 			em.merge(offer);
 		} finally {
 			em.close();
