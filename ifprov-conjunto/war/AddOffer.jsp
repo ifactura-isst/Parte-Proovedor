@@ -31,7 +31,7 @@
 			<!-- Banner -->
 				<section id="banner">
 					<div class="content menu-ancho text-center">
-					<form method="post" action="#">
+					<form method="post" action="/nuevaoferta">
 									<div class="row uniform 50%">
 										<div class="12u$">
 											<input type="text" name="title" id="title" value="" placeholder="Añade un título" required>

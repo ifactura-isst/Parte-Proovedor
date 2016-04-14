@@ -28,6 +28,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>UpdateOffer</servlet-name>
 		<servlet-class>es.upm.dit.isst.UpdateOffer</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>NewOfferMailServlet</servlet-name>
+		<servlet-class>es.upm.dit.isst.mail.NewOfferMailServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NewOfferMailServlet</servlet-name>
+		<url-pattern>/mandamail</url-pattern>
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>UpdateOffer</servlet-name>
 		<url-pattern>/actualizaoferta</url-pattern>

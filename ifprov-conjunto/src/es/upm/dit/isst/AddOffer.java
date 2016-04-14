@@ -39,7 +39,9 @@ public class AddOffer extends HttpServlet{
 		System.out.println("añadida oferta con titulo y descrip:"+title+" "+Description+" y USer:"+user+"precio: "+price+"servicio: "+service);
 		PrintWriter out = resp.getWriter();
 		req.getSession().setAttribute("dialogo", "Oferta creada Correctamente!");
-		out.println("<script>location='/ofertas';</script>");
+
+		resp.sendRedirect("/mandamail?title=" + title + "&description="
+				+ Description + "&price=" + price + "&service=" + service);
 
 		// resp.sendRedirect("/main");
 	}

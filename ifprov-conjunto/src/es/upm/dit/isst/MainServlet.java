@@ -42,6 +42,7 @@ public class MainServlet extends HttpServlet {
 
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
+		String idioma =   req.getHeader("Accept-Language").substring(0,2);
 		/*AppUser appUser = null;*/
 		
 		String url = userService.createLoginURL(req.getRequestURI());
@@ -110,9 +111,21 @@ public class MainServlet extends HttpServlet {
 				}
 			}
 		} catch (IllegalStateException e){
+			System.out.println("idioma = " + req.getHeader("Accept-Language").substring(0,2));
+			req.getSession().setAttribute("idioma", idioma);
 			System.out.println("User is not logged in");
+			if (idioma == "es"){
 			RequestDispatcher view = req.getRequestDispatcher("index.jsp");
-	        view.forward(req, resp);
+			view.forward(req, resp);
+			}
+			if (idioma == "en"){
+			RequestDispatcher view = req.getRequestDispatcher("index.jsp");
+			view.forward(req, resp);
+			}
+			else{
+			RequestDispatcher view = req.getRequestDispatcher("index.jsp");
+			view.forward(req, resp);
+			}
 		}
 		
 
