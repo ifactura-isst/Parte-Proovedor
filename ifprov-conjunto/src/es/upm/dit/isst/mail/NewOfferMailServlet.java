@@ -2,6 +2,7 @@ package es.upm.dit.isst.mail;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
 
@@ -17,48 +18,70 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
+import es.upm.dit.isst.facturas.dao.FacturasDAO;
+import es.upm.dit.isst.facturas.dao.FacturasDAOImpl;
+import es.upm.dit.isst.facturas.model.Factura;
+
 public class NewOfferMailServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws IOException {
-		
+	public ArrayList<String> eliminaduplicados(ArrayList<String> lista) {
+
+		HashSet<String> hs = new HashSet<String>();
+		hs.addAll(lista);
+		lista.clear();
+		lista.addAll(hs);
+		return lista;
+	}
+
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
 		System.out.println("llego mail serv");
-		UserService userService = UserServiceFactory.getUserService();
-		String user = userService.getCurrentUser().getEmail();
-		
+		FacturasDAO dao = FacturasDAOImpl.getInstance();
+		List<Factura> facturas = new ArrayList<Factura>();
+		facturas = dao.getFacturas();
+		ArrayList<String> usuarios = new ArrayList<String>();
 		String description = req.getParameter("description");
 		String title = req.getParameter("title");
 		String price = req.getParameter("price");
 		String service = req.getParameter("service");
 
-		try {
-			Properties props = new Properties();
-			Session session = Session.getDefaultInstance(props, null);
-			Message msg = new MimeMessage(session);
-			msg.setFrom(new InternetAddress(
-					"noreply@ifactura-conjunto.appspotmail.com",
-					"iFactura"));
-			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(user, user));
-			msg.setSubject("Nueva oferta disponible en iFactura");
-			String msgBody = "Se ha publicado una nueva oferta: \n \n - Titulo de la oferta: "
-					+ title + "\n - Descrpicion de la oferta : " + description
-					+ "\n - Precio: " + price +"€\n - Servicio ofertado: "+service+"\n";
+		for (int i = 0; i < facturas.size(); i++) {
+			if (facturas.get(i).getTipo() == service){
+			usuarios.add(facturas.get(i).getUser().getEmail());
+			}
+		}
+		usuarios = eliminaduplicados(usuarios);
 
-			msgBody += System.getProperty("line.separator") + "Un saludo,"
-					+ System.getProperty("line.separator") + "El equipo de iFactura";
-			msg.setText(msgBody);
-			Transport.send(msg);
-			System.out.println(msgBody);
-			resp.sendRedirect("/ofertas");
+		
+		for (int i = 0; i < usuarios.size(); i++) {
+			try {
+				Properties props = new Properties();
+				Session session = Session.getDefaultInstance(props, null);
+				Message msg = new MimeMessage(session);
+				msg.setFrom(new InternetAddress("noreply@ifactura-conjunto.appspotmail.com", "iFactura"));
+				msg.addRecipient(Message.RecipientType.TO, new InternetAddress(usuarios.get(i), usuarios.get(i)));
+				msg.setSubject("Nueva oferta disponible en iFactura");
+				String msgBody = "Se ha publicado una nueva oferta: \n \n - Titulo de la oferta: " + title
+						+ "\n - Descrpicion de la oferta : " + description + "\n - Precio: " + price
+						+ "€\n - Servicio ofertado: " + service + "\n";
 
-		} catch (Exception e) {
-			e.printStackTrace();
+				msgBody += System.getProperty("line.separator") + "Un saludo," + System.getProperty("line.separator")
+						+ "El equipo de iFactura";
+				msg.setText(msgBody);
+				Transport.send(msg);
+				System.out.println(msgBody);
+				resp.sendRedirect("/ofertas");
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
-	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
-		
+
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
 	}
 
 }
