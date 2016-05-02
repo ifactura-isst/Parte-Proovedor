@@ -22,7 +22,7 @@ public class Factura implements Serializable {
 	private String empresa;
 	//private String startDate;
 	//private String endDate;
-	private Long importe;
+	private double importe;
 	private String municipio;
 	private String provincia;
 	private User user;
@@ -85,7 +85,7 @@ public class Factura implements Serializable {
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}*/
-	public Long getImporte() {
+	public double getImporte() {
 		return importe;
 	}
 	public void setImporte(Long importe) {

@@ -92,6 +92,7 @@
 			       ['Tipo','Nº de facturas'],
 			       ['Teléfono', ${telefono}],
 			       ['Luz', ${luz}],
+			       ['Agua', ${agua}],
 			       ['Gas', ${gas}] 
 			     ]);
 			     var options4 = {

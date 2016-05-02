@@ -57,6 +57,7 @@ public class StatsServlet extends HttpServlet{
 		}
 		Set<String> buscatipos = new HashSet<String>(tipos);
 		req.getSession().setAttribute("luz", 0);
+		req.getSession().setAttribute("agua", 0);
 		req.getSession().setAttribute("gas", 0);
 		req.getSession().setAttribute("telefono", 0);
 		
