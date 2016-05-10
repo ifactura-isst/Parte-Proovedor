@@ -1,24 +1,27 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<head>
-		<title>iFactura-Proveedores</title>
-		<meta charset="utf-8" />
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Main menu - iFactura - Provider</title>
+
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/main.css" />
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-	</head>
-	<body class="landing">
+		
+		
+</head>
+<body class="landing">
 		<div id="page-wrapper">
 
 			<!-- Header -->
 				<header id="header">
-					<h1 id="logo"><a href="index.html"><c:out value="${idioma}"/><img src="images/logo.png"/></a></h1>
+					<h1 id="logo"><a href="index.html"><img src="images/logo.png"/></a></h1>
 					<nav id="nav">
 						<ul>
+							<li><c:if test="${user != null}"><c:out value="${user.nickname}"/></c:if></li>
 							<li><a class="button special" href="<c:url value="${url}"/>"><c:out value="${urlLinktext}"/></a></li>
 							<li style="margin-top:1%;"><a href=/?idioma=en><img src="/images/banderas/flag-en.jpg"></a></li>
 							<li style="margin-top:1%;"><a href=/?idioma=es><img src="/images/banderas/flag-es.jpg"></a></li>
@@ -28,13 +31,16 @@
 
 			<!-- Banner -->
 				<section id="banner">
-					<div class="content">
-						<header>
-							<h2>El futuro ha llegado</h2>
-							<p>Descubre una nueva forma de llegar a nuevos clientes<br>
-							 con una sola aplicación</p>
-						</header>
-						<span class="image"><img src="images/facturas.png" alt="" /></span>
+					<div class="content menu-ancho">
+						<a href="/ofertas"><div class="col-sm-3 button special categorias">
+						Offers
+						</div></a>
+						<a href="/pujas"><div class="col-sm-3 button special categorias">
+						Collective Buying
+						</div></a>
+						<a href="/estadisticas"><div class="col-sm-3 button special categorias">
+						Stats
+						</div></a>	
 					</div>
 					
 				</section>
@@ -50,6 +56,7 @@
 			<script src="js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="js/main.js"></script>
+			<script src="js/bootstrap.min.js"></script>
 
 	</body>
 </html>

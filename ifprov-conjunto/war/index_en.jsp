@@ -3,7 +3,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>iFactura-Proveedores</title>
+		<title>iFactura-Providers</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -16,7 +16,7 @@
 
 			<!-- Header -->
 				<header id="header">
-					<h1 id="logo"><a href="index.html"><c:out value="${idioma}"/><img src="images/logo.png"/></a></h1>
+					<h1 id="logo"><a href="index.html"><img src="images/logo.png"/></a></h1>
 					<nav id="nav">
 						<ul>
 							<li><a class="button special" href="<c:url value="${url}"/>"><c:out value="${urlLinktext}"/></a></li>
@@ -30,9 +30,9 @@
 				<section id="banner">
 					<div class="content">
 						<header>
-							<h2>El futuro ha llegado</h2>
-							<p>Descubre una nueva forma de llegar a nuevos clientes<br>
-							 con una sola aplicación</p>
+							<h2>The future has landed</h2>
+							<p>Discover a new clients<br>
+							 with only one app</p>
 						</header>
 						<span class="image"><img src="images/facturas.png" alt="" /></span>
 					</div>

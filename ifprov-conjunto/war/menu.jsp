@@ -23,6 +23,8 @@
 						<ul>
 							<li><c:if test="${user != null}"><c:out value="${user.nickname}"/></c:if></li>
 							<li><a class="button special" href="<c:url value="${url}"/>"><c:out value="${urlLinktext}"/></a></li>
+							<li style="margin-top:1%;"><a href=/?idioma=en><img src="/images/banderas/flag-en.jpg"></a></li>
+							<li style="margin-top:1%;"><a href=/?idioma=es><img src="/images/banderas/flag-es.jpg"></a></li>
 						</ul>
 					</nav>
 				</header>

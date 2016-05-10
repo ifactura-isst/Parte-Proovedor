@@ -42,16 +42,40 @@ public class MainServlet extends HttpServlet {
 
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
-		String idioma =   req.getHeader("Accept-Language").substring(0,2);
+		Object lang = req.getSession().getAttribute("idioma");
+		System.out.println("este es el atributo: "+lang);
+		String idioma = req.getParameter("idioma"); 
+		System.out.println(idioma);
+		
+		if (idioma == null && lang == null){
+		 idioma = req.getHeader("Accept-Language").substring(0,2);
+		}
+		if(idioma == null){
+			String language = lang.toString();
+			idioma = language;
+		}
+		System.out.println("variable test="+idioma);
 		/*AppUser appUser = null;*/
+		String urlLinktext = "";
 		
 		String url = userService.createLoginURL(req.getRequestURI());
-		String urlLinktext = "Login";
+		req.getSession().setAttribute("idioma", idioma);
+		if (idioma.equals("en")){
+		 urlLinktext = "Login";
+		}
+		else{
+	     urlLinktext = "Iniciar sesión";
+		}
 		/*List<Resource> resources = new ArrayList<Resource>();*/
 		            
 		if (user != null){
 		    url = userService.createLogoutURL(req.getRequestURI());
-		    urlLinktext = "Logout";
+		    if (idioma.equals("en")){
+		     urlLinktext = "Logout";
+		    }
+		    if (idioma.equals("es")){
+			 urlLinktext = "Cerrar sesión";
+			}
 		    /*resources = resourceDAO.listResources();
 			appUser = appUserDAO.getUser(user.getUserId());*/
 		}
@@ -106,24 +130,27 @@ public class MainServlet extends HttpServlet {
 				//	resp.sendRedirect("/main");
 				//} else {
 					//req.getSession().setAttribute("appUser", appUser);
+					if (idioma.equals("es")){
+						
 					RequestDispatcher view = req.getRequestDispatcher("menu.jsp");
 			        view.forward(req, resp);
+					}
+					if (idioma.equals("en")){
+					
+					RequestDispatcher view = req.getRequestDispatcher("menu_en.jsp");
+			        view.forward(req, resp);
+					}
 				}
 			}
 		} catch (IllegalStateException e){
-			System.out.println("idioma = " + req.getHeader("Accept-Language").substring(0,2));
-			req.getSession().setAttribute("idioma", idioma);
+			
 			System.out.println("User is not logged in");
-			if (idioma == "es"){
+			if (idioma.equals("es")){
 			RequestDispatcher view = req.getRequestDispatcher("index.jsp");
 			view.forward(req, resp);
 			}
-			if (idioma == "en"){
-			RequestDispatcher view = req.getRequestDispatcher("index.jsp");
-			view.forward(req, resp);
-			}
-			else{
-			RequestDispatcher view = req.getRequestDispatcher("index.jsp");
+			if (idioma.equals("en")){
+			RequestDispatcher view = req.getRequestDispatcher("index_en.jsp");
 			view.forward(req, resp);
 			}
 		}
