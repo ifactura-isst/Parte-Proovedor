@@ -41,7 +41,10 @@ public class StatsServlet extends HttpServlet{
 		
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
-		
+		Object lang = req.getSession().getAttribute("idioma");
+		String idioma = "";
+		String language = lang.toString();
+		idioma = language;
 		
 		FacturasDAO dao = FacturasDAOImpl.getInstance();
 		List<Factura> facturas = new ArrayList<Factura>();
@@ -74,8 +77,14 @@ public class StatsServlet extends HttpServlet{
 			resp.sendRedirect("/"); //si no estoy logueado me devuelve al inicio
 			
 		} else{
+			if (idioma.equals("es")){
 			RequestDispatcher view = req.getRequestDispatcher("StatsDashboard.jsp");
 	        view.forward(req, resp);
+			}
+			if (idioma.equals("en")){
+			RequestDispatcher view = req.getRequestDispatcher("StatsDashboard_en.jsp");
+	        view.forward(req, resp);
+			}
 		}
 		
 		

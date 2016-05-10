@@ -1,10 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Main menu - iFactura - Provider</title>
+<title>Offers - iFactura - Proveedor</title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -22,25 +23,29 @@
 					<nav id="nav">
 						<ul>
 							<li><c:if test="${user != null}"><c:out value="${user.nickname}"/></c:if></li>
+							<li><a class="button special" href="/nuevaoferta">New Offer</a></li>
 							<li><a class="button special" href="<c:url value="${url}"/>"><c:out value="${urlLinktext}"/></a></li>
-							<li style="margin-top:1%;"><a href=/?idioma=en><img src="/images/banderas/flag-en.jpg"><c:out value="${urlidiomaen}"/></a></li>
-							<li style="margin-top:1%;"><a href=/?idioma=es><img src="/images/banderas/flag-es.jpg"><c:out value="${urlidiomaes}"/></a></li>
 						</ul>
 					</nav>
 				</header>
 
 			<!-- Banner -->
 				<section id="banner">
-					<div class="content menu-ancho">
-						<a href="/ofertas"><div class="col-sm-3 button special categorias">
-						Offers
-						</div></a>
-						<a href="/pujas"><div class="col-sm-3 button special categorias">
-						Collective Buying
-						</div></a>
-						<a href="/estadisticas"><div class="col-sm-3 button special categorias">
-						Stats
-						</div></a>	
+					<div class="content menu-ancho text-center">
+						<c:if test="${fn:length(offers) == 0}">You don´t have any offer yet...</c:if>
+					<c:forEach items="${offers}" var="offer">
+						<div class="col-md-3 height offer">
+							<h4><c:out value="${offer.title}" /></h4>
+							<h4><c:out value="${offer.price}" />€</h4>
+							<hr>
+							<p title="${offer.service}"><c:out value="${offer.service}" /></p>
+							<p title="${offer.description}"><c:out value="${offer.description}" /></p>
+							<span>
+								<a class="btn btn-default btn-round btn-border-w" href="<c:url value="/actualizaoferta?id=${offer.id}" />">Modify</a>
+								<a class="btn btn-danger btn-round btn-border-w" href="<c:url value="/eliminaoferta?id=${offer.id}" />">Delete</a>
+							</span>
+						</div>
+					</c:forEach>		
 					</div>
 					
 				</section>

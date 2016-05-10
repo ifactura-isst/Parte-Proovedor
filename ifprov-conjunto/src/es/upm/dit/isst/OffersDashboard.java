@@ -28,6 +28,10 @@ public class OffersDashboard extends HttpServlet{
 		
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
+		Object lang = req.getSession().getAttribute("idioma");
+		String idioma = "";
+		String language = lang.toString();
+		idioma = language;
 		
 		OfferDAO dao = OfferDAOImpl.getInstance();
 		List<Offer> offers = new ArrayList<Offer>();
@@ -40,8 +44,14 @@ public class OffersDashboard extends HttpServlet{
 			resp.sendRedirect("/"); //si no estoy logueado me devuelve al inicio
 			
 		} else{
+			if (idioma.equals("es")){
 			RequestDispatcher view = req.getRequestDispatcher("OffersDashboard.jsp");
 	        view.forward(req, resp);
+			}
+			if (idioma.equals("en")){
+			RequestDispatcher view = req.getRequestDispatcher("OffersDashboard_en.jsp");
+	        view.forward(req, resp);
+			}
 		}
 		
 		

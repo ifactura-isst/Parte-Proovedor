@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Estadisticas - iFactura - Proveedor</title>
+<title>Stats - iFactura - Proveedor</title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -73,14 +73,14 @@
 				 //--Grafico 2--
 			     // Tabla de datos: valores y etiquetas de la gráfica
 			     var data2 = google.visualization.arrayToDataTable([
-			       ['Tipo','Nº de facturas registradas'],
-			       ['Teléfono', ${telefono}],
-			       ['Luz', ${luz}],
+			       ['Type','Number of invoices registered'],
+			       ['Phone', ${telefono}],
+			       ['Light', ${luz}],
 			       ['Gas', ${gas}]
 			         
 			     ]);
 			     var options2 = {
-			       title: 'Tipo de facturas registradas',
+			       title: 'Type of invoices registered',
 		           legend: 'none',
 		           vAxis: { gridlines: { count: 10 } }
 			       //is3D: true
@@ -89,14 +89,14 @@
 				 //--Grafico 4-- Porcentaje de reservas hoy
 			     // Tabla de datos: valores y etiquetas de la gráfica
 			     var data4 = google.visualization.arrayToDataTable([
-			       ['Tipo','Nº de facturas'],
-			       ['Teléfono', ${telefono}],
-			       ['Luz', ${luz}],
-			       ['Agua', ${agua}],
+			       ['Type','Number of invoices'],
+			       ['Phone', ${telefono}],
+			       ['Light', ${luz}],
+			       ['Water', ${agua}],
 			       ['Gas', ${gas}] 
 			     ]);
 			     var options4 = {
-			       title: 'Porcentaje de tipos de facturas',
+			       title: '% type of invoices',
 		           legend: 'none',
 		           pieHole: 0.5
 		           //vAxis: { gridlines: { count: 10 } }
@@ -105,12 +105,12 @@
 			   	 //--Grafico 1-- Porcentaje de reservas hoy
 			     // Tabla de datos: valores y etiquetas de la gráfica
 			     var data1 = google.visualization.arrayToDataTable([
-			       ['Usuarios','Nº Usuarios'],
-			       ['Facturas', ${numfacturas}],
-			       ['Usuarios', ${numusuarios}]
+			       ['Users','Number of users'],
+			       ['Invoices', ${numfacturas}],
+			       ['Users', ${numusuarios}]
 			     ]);
 			     var options1 = {
-			       title: 'Usuarios registrados en el sistema',
+			       title: 'Users registered in the app',
 		           legend: 'none',
 		           pieHole: 0.5
 		           //vAxis: { gridlines: { count: 10 } }
@@ -119,12 +119,12 @@
 			     //--Grafico 3-- Porcentaje de reservas hoy
 			     // Tabla de datos: valores y etiquetas de la gráfica
 			     var data3 = google.visualization.arrayToDataTable([
-			       ['Estado','Nº Puestos'],
-			       ['Facturas', ${numfacturas}],
-			       ['Usuarios', ${numusuarios}]  
+			       ['Users','Number of users'],
+			       ['Invoices', ${numfacturas}],
+			       ['Users', ${numusuarios}]  
 			     ]);
 			     var options3 = {
-			       title: 'Facturas y usuarios',
+			       title: 'Invoices and Users',
 		           legend: 'none',
 		           pieHole: 0.5
 		           //vAxis: { gridlines: { count: 10 } }

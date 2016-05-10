@@ -57,14 +57,20 @@ public class MainServlet extends HttpServlet {
 		System.out.println("variable test="+idioma);
 		/*AppUser appUser = null;*/
 		String urlLinktext = "";
+		String urlidiomaes = "";
+		String urlidiomaen = "";
 		
 		String url = userService.createLoginURL(req.getRequestURI());
 		req.getSession().setAttribute("idioma", idioma);
 		if (idioma.equals("en")){
 		 urlLinktext = "Login";
+		 urlidiomaes = "Spanish";
+		 urlidiomaen = "English";
 		}
 		else{
 	     urlLinktext = "Iniciar sesión";
+	     urlidiomaes = "Español";
+		 urlidiomaen = "Inglés";
 		}
 		/*List<Resource> resources = new ArrayList<Resource>();*/
 		            
@@ -89,6 +95,9 @@ public class MainServlet extends HttpServlet {
 		//req.getSession().setAttribute("resources", new ArrayList<Resource>(resources));
 		req.getSession().setAttribute("url", url);
 		req.getSession().setAttribute("urlLinktext", urlLinktext);
+		req.getSession().setAttribute("urlidiomaes", urlidiomaes);
+		req.getSession().setAttribute("urlidiomaen", urlidiomaen);
+		
 		
 		//Contador para mensajes Flash
 	    Object counter = req.getSession().getAttribute("Count");

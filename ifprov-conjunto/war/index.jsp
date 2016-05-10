@@ -20,8 +20,8 @@
 					<nav id="nav">
 						<ul>
 							<li><a class="button special" href="<c:url value="${url}"/>"><c:out value="${urlLinktext}"/></a></li>
-							<li style="margin-top:1%;"><a href=/?idioma=en><img src="/images/banderas/flag-en.jpg"></a></li>
-							<li style="margin-top:1%;"><a href=/?idioma=es><img src="/images/banderas/flag-es.jpg"></a></li>
+							<li style="margin-top:1%;"><a href=/?idioma=en><img src="/images/banderas/flag-en.jpg"><c:out value="${urlidiomaen}"/></a></li>
+							<li style="margin-top:1%;"><a href=/?idioma=es><img src="/images/banderas/flag-es.jpg"><c:out value="${urlidiomaes}"/></a></li>
 						</ul>
 					</nav>
 				</header>
