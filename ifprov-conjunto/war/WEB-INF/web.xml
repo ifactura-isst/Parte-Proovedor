@@ -66,7 +66,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>UpdateSubasta</servlet-name>
-		<url-pattern>/actualizaSubasta</url-pattern>
+		<url-pattern>/actualizasubasta</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Main</servlet-name>

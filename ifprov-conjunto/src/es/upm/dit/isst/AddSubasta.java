@@ -38,7 +38,8 @@ public class AddSubasta extends HttpServlet{
 		int userMax = Integer.parseInt(req.getParameter("userMax"));
 		SubastaDAO dao = SubastaDAOImpl.getInstance();
 		ArrayList<String> customers = new ArrayList<String>();
-		dao.add(false,userMax, 0, title, description,user, customers);
+		System.out.println("subasta con datos:" +title+description+userMax);
+		dao.add(false , userMax, 0, title, description, user, customers);
 		PrintWriter out = resp.getWriter();
 		req.getSession().setAttribute("dialogo", "Subasta creada Correctamente!");
 

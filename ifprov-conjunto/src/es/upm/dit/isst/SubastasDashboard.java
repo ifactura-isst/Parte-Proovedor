@@ -15,9 +15,6 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-import es.upm.dit.isst.offers.dao.OfferDAO;
-import es.upm.dit.isst.offers.dao.OfferDAOImpl;
-import es.upm.dit.isst.offers.model.Offer;
 import es.upm.dit.isst.subastas.dao.SubastaDAO;
 import es.upm.dit.isst.subastas.dao.SubastaDAOImpl;
 import es.upm.dit.isst.subastas.model.Subasta;

@@ -11,6 +11,8 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 import es.upm.dit.isst.offers.dao.OfferDAO;
 import es.upm.dit.isst.offers.dao.OfferDAOImpl;
+import es.upm.dit.isst.subastas.dao.SubastaDAO;
+import es.upm.dit.isst.subastas.dao.SubastaDAOImpl;
 
 
 
@@ -31,13 +33,13 @@ public class RemoveSubasta extends HttpServlet {
 		// /////COMPROBACION ADMIN///////////
 		
 			String id = req.getParameter("id");
-			OfferDAO dao = OfferDAOImpl.getInstance();
+			SubastaDAO dao = SubastaDAOImpl.getInstance();
 			dao.remove(Long.parseLong(id));
 			//alertHTML(out, "Reserva eliminada!!");
-			req.getSession().setAttribute("dialogo", "Oferta Eliminada Correctamente!");
+			req.getSession().setAttribute("dialogo", "Subasta Eliminada Correctamente!");
 
 		
-		out.println("<script>location='/ofertas';</script>");
+		out.println("<script>location='/pujas';</script>");
 
 		
 	}

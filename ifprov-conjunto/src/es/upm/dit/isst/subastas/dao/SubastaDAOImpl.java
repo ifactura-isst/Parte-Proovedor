@@ -80,9 +80,9 @@ public class SubastaDAOImpl implements SubastaDAO {
 			Subasta subasta = em.find(Subasta.class, subastaId);
 			subasta.setTitle(title);
 			subasta.setDescription(description);
-			subasta.setUsuariosApuntados(customers);
+			subasta.setCustomers(customers);
 			subasta.setState(state);
-			subasta.setNumeroUsuarios(userApuntados);
+			subasta.setuserApuntados(userApuntados);
 			em.merge(subasta);
 		} finally {
 			em.close();

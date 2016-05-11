@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Offers - iFactura - Proveedor</title>
+<title>Collective Buying - iFactura - Proveedor</title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -36,12 +36,13 @@
 					<c:forEach items="${subastas}" var="subasta">
 						<div class="col-md-3 height offer">
 							<h4><c:out value="${subasta.title}" /></h4>
-							<h4><c:out value="${subasta.userMax}" />€</h4>
+							<h4>Total: <c:out value="${subasta.userMax}" /></h4>
+							<h4>Current: <c:out value="${subasta.userApuntados}" /></h4>
 							<hr>
 							<p title="${subasta.description}"><c:out value="${subasta.description}" /></p>
 							<span>
-								<a class="btn btn-default btn-round btn-border-w" href="<c:url value="/actualizasubasta?id=${offer.id}" />">Modify</a>
-								<a class="btn btn-danger btn-round btn-border-w" href="<c:url value="/eliminasubasta?id=${offer.id}" />">Delete</a>
+								<a class="btn btn-default btn-round btn-border-w" href="<c:url value="/actualizasubasta?id=${subasta.id}" />">Modify</a>
+								<a class="btn btn-danger btn-round btn-border-w" href="<c:url value="/eliminasubasta?id=${subasta.id}" />">Delete</a>
 							</span>
 						</div>
 					</c:forEach>		
