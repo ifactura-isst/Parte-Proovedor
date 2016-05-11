@@ -29,6 +29,22 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-class>es.upm.dit.isst.UpdateOffer</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>Subastas</servlet-name>
+		<servlet-class>es.upm.dit.isst.SubastasDashboard</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AddSubastas</servlet-name>
+		<servlet-class>es.upm.dit.isst.AddSubasta</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>RemoveSubasta</servlet-name>
+		<servlet-class>es.upm.dit.isst.RemoveSubasta</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UpdateSubasta</servlet-name>
+		<servlet-class>es.upm.dit.isst.UpdateSubasta</servlet-class>
+	</servlet>
+	<servlet>    
 		<servlet-name>NewOfferMailServlet</servlet-name>
 		<servlet-class>es.upm.dit.isst.mail.NewOfferMailServlet</servlet-class>
 	</servlet>
@@ -49,6 +65,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/actualizaoferta</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
+		<servlet-name>UpdateSubasta</servlet-name>
+		<url-pattern>/actualizaSubasta</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>Main</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
@@ -57,11 +77,23 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/ofertas</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
+		<servlet-name>Subastas</servlet-name>
+		<url-pattern>/pujas</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>AddOffer</servlet-name>
 		<url-pattern>/nuevaoferta</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
+		<servlet-name>AddSubastas</servlet-name>
+		<url-pattern>/nuevasubasta</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>RemoveOffer</servlet-name>
 		<url-pattern>/eliminaoferta</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RemoveSubasta</servlet-name>
+		<url-pattern>/eliminasubasta</url-pattern>
 	</servlet-mapping>
 </web-app>
