@@ -48,9 +48,9 @@ public class NewOfferMailServlet extends HttpServlet {
 		String service = req.getParameter("service");
 
 		for (int i = 0; i < facturas.size(); i++) {
-			if (facturas.get(i).getTipo() == service){
+			
 			usuarios.add(facturas.get(i).getUser().getEmail());
-			}
+			
 		}
 		usuarios = eliminaduplicados(usuarios);
 
@@ -65,7 +65,7 @@ public class NewOfferMailServlet extends HttpServlet {
 				msg.setSubject("Nueva oferta disponible en iFactura");
 				String msgBody = "Se ha publicado una nueva oferta: \n \n - Titulo de la oferta: " + title
 						+ "\n - Descrpicion de la oferta : " + description + "\n - Precio: " + price
-						+ "€\n - Servicio ofertado: " + service + "\n";
+						+ "ï¿½\n - Servicio ofertado: " + service + "\n";
 
 				msgBody += System.getProperty("line.separator") + "Un saludo," + System.getProperty("line.separator")
 						+ "El equipo de iFactura";
