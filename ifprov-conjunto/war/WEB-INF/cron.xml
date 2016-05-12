@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cronentries>
+	<cron>
+		<schedule>every day 00:00</schedule> 
+		<description>Sends a reminder mail to subasta users</description>
+		<url>/subastamail</url>
+	</cron> 
+</cronentries>

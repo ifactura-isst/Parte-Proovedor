@@ -14,6 +14,8 @@ public interface SubastaDAO {
 	public void remove(long id);
 
 	List<Subasta> listSubastasByUser(User user);
+	
+	List<Subasta> readSubastas();
 
 	public void add(boolean state, int userMax, int userApuntados, String title, String description, User user, ArrayList<String> customers);
 

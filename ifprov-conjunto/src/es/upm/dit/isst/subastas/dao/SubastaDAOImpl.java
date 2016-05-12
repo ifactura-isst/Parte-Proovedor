@@ -36,6 +36,15 @@ public class SubastaDAOImpl implements SubastaDAO {
 		List<Subasta> subastas = q.getResultList();
 		return subastas;
 	}
+	
+	@Override
+	public List<Subasta> readSubastas(){
+		EntityManager em = EMFService.get().createEntityManager();
+		Query q = em.createQuery("select m from Subasta m");
+		List<Subasta> res = q.getResultList();
+		em.close();
+		return res;
+	}
 
 	@Override
 	public void add(boolean state, int userMax, int userApuntados, String title, String description, User user, ArrayList<String> customers) {
