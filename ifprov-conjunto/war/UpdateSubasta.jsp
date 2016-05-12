@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Ofertas - iFactura - Proveedor</title>
+<title>Subastas - iFactura - Proveedor</title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -22,7 +22,7 @@
 					<nav id="nav">
 						<ul>
 							<li><c:if test="${user != null}"><c:out value="${user.nickname}"/></c:if></li>
-							<li><a class="button special" href="/nuevaoferta">Nueva oferta</a></li>
+							<li><a class="button special" href="/nuevasubasta">Nueva subasta</a></li>
 							<li><a class="button special" href="<c:url value="${url}"/>"><c:out value="${urlLinktext}"/></a></li>
 						</ul>
 					</nav>
@@ -31,28 +31,20 @@
 			<!-- Banner -->
 				<section id="banner">
 					<div class="content menu-ancho text-center">
-					<form method="post" action="/actualizaoferta?offerId=${id}">
+					<form method="post" action="/actualizasubasta?subastaId=${id}">
 									<div class="row uniform 50%">
 										<div class="12u$">
 											<input type="text" name="title" id="title" value="${title}" placeholder="Añade un título" required>
 										</div>
 										<div class="6u 12u$(xsmall)">
-											<input type="text" name="price" id="price" value="${price}" pattern="[0-9]{1,3}" placeholder="Añade un precio" required>
-										</div>
-										<div class="12u$">
-										<select name="service" id="service" required>
-													<option value="${service}"><c:out value="${service}"/></option>
-													<option value="luz">Luz</option>
-													<option value="telefono">Teléfono</option>
-													<option value="gas">Gas</option>
-										</select>
+											<input type="text" name="userMax" id="userMax" value="${userMax}" pattern="[0-9]{1,5}" placeholder="Añade un número máximo de usuarios" required>
 										</div>
 										<div class="12u$">
 											<textarea name="description" id="description" placeholder="Añade una descripción" rows="6"><c:out value="${description}"/></textarea>
 										</div>
 										<div class="12u$">
 											<ul class="actions">
-												<li><input type="submit" value="Actualizar oferta" class="special"></li>
+												<li><input type="submit" value="Actualizar subasta" class="special"></li>
 												<li><input type="reset" value="Reset"></li>
 											</ul>
 										</div>

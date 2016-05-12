@@ -35,9 +35,7 @@ public class RemoveSubasta extends HttpServlet {
 			String id = req.getParameter("id");
 			SubastaDAO dao = SubastaDAOImpl.getInstance();
 			dao.remove(Long.parseLong(id));
-			//alertHTML(out, "Reserva eliminada!!");
 			req.getSession().setAttribute("dialogo", "Subasta Eliminada Correctamente!");
-
 		
 		out.println("<script>location='/pujas';</script>");
 

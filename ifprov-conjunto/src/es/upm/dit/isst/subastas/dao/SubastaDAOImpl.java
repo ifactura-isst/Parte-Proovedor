@@ -82,6 +82,7 @@ public class SubastaDAOImpl implements SubastaDAO {
 			subasta.setDescription(description);
 			subasta.setCustomers(customers);
 			subasta.setState(state);
+			subasta.setuserMax(userMax);
 			subasta.setuserApuntados(userApuntados);
 			em.merge(subasta);
 		} finally {

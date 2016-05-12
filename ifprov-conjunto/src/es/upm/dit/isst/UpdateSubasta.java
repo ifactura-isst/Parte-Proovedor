@@ -2,6 +2,7 @@ package es.upm.dit.isst;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,9 +14,9 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-import es.upm.dit.isst.offers.dao.OfferDAO;
-import es.upm.dit.isst.offers.dao.OfferDAOImpl;
-import es.upm.dit.isst.offers.model.Offer;
+import es.upm.dit.isst.subastas.dao.SubastaDAO;
+import es.upm.dit.isst.subastas.dao.SubastaDAOImpl;
+import es.upm.dit.isst.subastas.model.Subasta;
 
 public class UpdateSubasta extends HttpServlet{
 	
@@ -45,18 +46,16 @@ public class UpdateSubasta extends HttpServlet{
 		}
 		String offerId = req.getParameter("id");
 
-		OfferDAO dao = OfferDAOImpl.getInstance();
+		SubastaDAO dao = SubastaDAOImpl.getInstance();
 
-		Offer offer = dao.getOffer(Long.parseLong(offerId));
-		String description = offer.getDescription();
-		String title = offer.getTitle();
-		int price = offer.getPrice();
-		String service = offer.getService();
+		Subasta subasta = dao.getSubasta(Long.parseLong(offerId));
+		String description = subasta.getDescription();
+		String title = subasta.getTitle();
+		int userMax = subasta.getuserMax();
 
 		req.getSession().setAttribute("title", title);
 		req.getSession().setAttribute("description", description);
-		req.getSession().setAttribute("price", price);
-		req.getSession().setAttribute("service", service);
+		req.getSession().setAttribute("userMax", userMax);
 		
 		req.getSession().setAttribute("id", offerId);
 		req.getSession().setAttribute("user", user);
@@ -64,7 +63,7 @@ public class UpdateSubasta extends HttpServlet{
 		req.getSession().setAttribute("urlLinktext", urlLinktext);
 
 		RequestDispatcher view = req
-				.getRequestDispatcher("UpdateOffer.jsp");
+				.getRequestDispatcher("UpdateSubasta.jsp");
 		view.forward(req, resp);
 	}
 
@@ -73,28 +72,33 @@ public class UpdateSubasta extends HttpServlet{
 		
 			PrintWriter out = resp.getWriter();
 
-			OfferDAO daoffer = OfferDAOImpl.getInstance();
+			SubastaDAO daosubasta = SubastaDAOImpl.getInstance();
 
 			// UserService userService = UserServiceFactory.getUserService();
 			// String user = userService.getCurrentUser().getUserId();
-			String offerId = req.getParameter("offerId");
+			
+			String subastaId = req.getParameter("subastaId");
 			String title = checkNull(req.getParameter("title"));
 			String description = checkNull(req.getParameter("description"));
-			int price = Integer.parseInt(req.getParameter("price"));
-			String service = checkNull(req.getParameter("service"));
+			int userMax = Integer.parseInt(req.getParameter("userMax"));
+			Subasta subasta = daosubasta.getSubasta(Long.parseLong(subastaId));
+			
+			boolean state = subasta.getState();
+			int userApuntados = subasta.getuserApuntados();
+			ArrayList<String> customers = subasta.getUsuariosApuntados();
+			
 			UserService userService = UserServiceFactory.getUserService();
 			User user = userService.getCurrentUser();
 			
-			System.out.println("Oferta datos a update: "+offerId+title+description);
+			System.out.println("Subasta datos a update: "+subastaId+title+description);
 
 			try {
-				System.out.println("Oferta datos a update: "+offerId+title+description);
-				daoffer.update(Long.parseLong(offerId), title,
-						description, user, price, service);
-				req.getSession().setAttribute("dialogo", "Oferta Modificada Correctamente!");
+				System.out.println("Subasta datos a update: "+subastaId+title+description+userMax);
+				daosubasta.update(Long.parseLong(subastaId), state, userMax, userApuntados,title,description,user,customers);
+				req.getSession().setAttribute("dialogo", "Subasta Modificada Correctamente!");
 
 			} finally {
-				out.println("<script>location='/ofertas';</script>");
+				out.println("<script>location='/pujas';</script>");
 			}
 		
 
