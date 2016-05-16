@@ -73,14 +73,23 @@
 				 //--Grafico 2--
 			     // Tabla de datos: valores y etiquetas de la gráfica
 			     var data2 = google.visualization.arrayToDataTable([
-			       ['Type','Number of invoices registered'],
-			       ['Phone', ${telefono}],
-			       ['Light', ${luz}],
-			       ['Gas', ${gas}]
+			       ['Type','Month Consumption'],
+			       ['January', ${Enero}],
+			       ['February', ${Febrero}],
+			       ['March', ${Marzo}],
+			       ['April', ${Abril}],
+			       ['May', ${Mayo}],
+			       ['June', ${Junio}],
+			       ['July', ${Julio}],
+			       ['August', ${Agosto}],
+			       ['September', ${Septiembre}],
+			       ['October', ${Octubre}],
+			       ['November', ${Noviembre}],
+			       ['December', ${Diciembre}]
 			         
 			     ]);
 			     var options2 = {
-			       title: 'Type of invoices registered',
+			       title: 'Monthly consumption',
 		           legend: 'none',
 		           vAxis: { gridlines: { count: 10 } }
 			       //is3D: true
@@ -89,14 +98,14 @@
 				 //--Grafico 4-- Porcentaje de reservas hoy
 			     // Tabla de datos: valores y etiquetas de la gráfica
 			     var data4 = google.visualization.arrayToDataTable([
-			       ['Type','Number of invoices'],
-			       ['Phone', ${telefono}],
-			       ['Light', ${luz}],
-			       ['Water', ${agua}],
-			       ['Gas', ${gas}] 
+			       ['Type','Invoices'],
+			       ['Orange', ${Orange}],
+			       ['Movistar', ${Movistar}],
+			       ['Vodafone', ${Vodafone}],
+			       ['Yoigo', ${Yoigo}] 
 			     ]);
 			     var options4 = {
-			       title: '% type of invoices',
+			       title: 'Carriers percentage',
 		           legend: 'none',
 		           pieHole: 0.5
 		           //vAxis: { gridlines: { count: 10 } }
@@ -105,12 +114,12 @@
 			   	 //--Grafico 1-- Porcentaje de reservas hoy
 			     // Tabla de datos: valores y etiquetas de la gráfica
 			     var data1 = google.visualization.arrayToDataTable([
-			       ['Users','Number of users'],
+			       ['Type','Number'],
 			       ['Invoices', ${numfacturas}],
 			       ['Users', ${numusuarios}]
 			     ]);
 			     var options1 = {
-			       title: 'Users registered in the app',
+			       title: 'Registered Users',
 		           legend: 'none',
 		           pieHole: 0.5
 		           //vAxis: { gridlines: { count: 10 } }
@@ -119,7 +128,7 @@
 			     //--Grafico 3-- Porcentaje de reservas hoy
 			     // Tabla de datos: valores y etiquetas de la gráfica
 			     var data3 = google.visualization.arrayToDataTable([
-			       ['Users','Number of users'],
+			       ['Type','Number'],
 			       ['Invoices', ${numfacturas}],
 			       ['Users', ${numusuarios}]  
 			     ]);

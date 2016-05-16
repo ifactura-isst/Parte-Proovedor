@@ -40,7 +40,7 @@ public class NewOfferMailServlet extends HttpServlet {
 		System.out.println("llego mail serv");
 		FacturasDAO dao = FacturasDAOImpl.getInstance();
 		List<Factura> facturas = new ArrayList<Factura>();
-		facturas = dao.getFacturas();
+		facturas = dao.getAllFacturas();
 		ArrayList<String> usuarios = new ArrayList<String>();
 		String description = req.getParameter("description");
 		String title = req.getParameter("title");

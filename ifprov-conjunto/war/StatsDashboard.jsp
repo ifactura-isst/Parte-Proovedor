@@ -73,14 +73,23 @@
 				 //--Grafico 2--
 			     // Tabla de datos: valores y etiquetas de la gráfica
 			     var data2 = google.visualization.arrayToDataTable([
-			       ['Tipo','Nº de facturas registradas'],
-			       ['Teléfono', ${telefono}],
-			       ['Luz', ${luz}],
-			       ['Gas', ${gas}]
+			       ['Tipo','Consumo por Mes'],
+			       ['Enero', ${Enero}],
+			       ['Febrero', ${Febrero}],
+			       ['Marzo', ${Marzo}],
+			       ['Abril', ${Abril}],
+			       ['Mayo', ${Mayo}],
+			       ['Junio', ${Junio}],
+			       ['Julio', ${Julio}],
+			       ['Agosto', ${Agosto}],
+			       ['Septiembre', ${Septiembre}],
+			       ['Octubre', ${Octubre}],
+			       ['Noviembre', ${Noviembre}],
+			       ['Dieciembre', ${Diciembre}]
 			         
 			     ]);
 			     var options2 = {
-			       title: 'Tipo de facturas registradas',
+			       title: 'Consumo por Meses',
 		           legend: 'none',
 		           vAxis: { gridlines: { count: 10 } }
 			       //is3D: true
@@ -90,13 +99,13 @@
 			     // Tabla de datos: valores y etiquetas de la gráfica
 			     var data4 = google.visualization.arrayToDataTable([
 			       ['Tipo','Nº de facturas'],
-			       ['Teléfono', ${telefono}],
-			       ['Luz', ${luz}],
-			       ['Agua', ${agua}],
-			       ['Gas', ${gas}] 
+			       ['Orange', ${Orange}],
+			       ['Movistar', ${Movistar}],
+			       ['Vodafone', ${Vodafone}],
+			       ['Yoigo', ${Yoigo}] 
 			     ]);
 			     var options4 = {
-			       title: 'Porcentaje de tipos de facturas',
+			       title: 'Porcentaje de empresas de facturas',
 		           legend: 'none',
 		           pieHole: 0.5
 		           //vAxis: { gridlines: { count: 10 } }
@@ -105,7 +114,7 @@
 			   	 //--Grafico 1-- Porcentaje de reservas hoy
 			     // Tabla de datos: valores y etiquetas de la gráfica
 			     var data1 = google.visualization.arrayToDataTable([
-			       ['Usuarios','Nº Usuarios'],
+			       ['Usuarios','Numero'],
 			       ['Facturas', ${numfacturas}],
 			       ['Usuarios', ${numusuarios}]
 			     ]);
